@@ -32,6 +32,7 @@ the model do instead? Name one thing you would add to the harness, and what it w
 (extra model calls, tokens, time, or a new way to fail).
 
 (write here)
+q21 is still wrong with layer 3. The question asks about Nur-Sultan, and the answer was 3.9%. In the first step the model used the name Nur-Sultan and the tool said it was an unknown region. In the second step the model called list_regions, which was good. In the third step it asked for Almaty City, but the correct region is Astana. The tool gave 3.9 for Almaty City, so the number really came from a tool and layer 3 accepted it. I would add a check that the region in the last tool call matches the region from the question. It would cost at least one more model call for these questions, more tokens, and it could fail in a new way, because the same small model could match the name wrongly again
 
 ## 3. Workflow or agent for the monthly ranking?
 
@@ -41,6 +42,7 @@ number of model calls, the tokens and the time you measured in Part 1. Then say 
 what kind of question would make you choose the other one.
 
 (write here)
+I would ship the fixed workflow. On the 15 fixed-shape questions the workflow got 13 correct, 0 wrong and 2 no answer. It used 15 model calls, 3852 tokens and 16.2 seconds. The bare agent got 9 correct, 2 wrong and 4 no answer. It used 26 model calls, 19835 tokens and 49.3 seconds. So the workflow was more accurate, cheaper and faster. Its two failures (q21 and q22) were no answer, not a wrong number, so a person can see them. The agent gave wrong answers on q08 and q11. Only 15 questions is not many, and the intervals overlap, so this is not proven. I would choose the agent for an open question, for example a percent change, because the workflow has no shape for it
 
 ---
 
