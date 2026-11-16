@@ -22,6 +22,7 @@ whether it changed what the agent *can do* or only what it *admits*. If no layer
 number of correct answers, say so and explain what the layers did change instead.
 
 (write here)
+Layer 1 changed my results the most. The bare agent had 16 correct, 4 wrong and 4 no answer out of 24. With layer 1 it had 18 correct, 6 wrong and 0 no answer. This layer changed what the agent can do. When a tool did not know a region name, the error went back to the model, and the model could try again. Because of this, q23 and q24 became correct. But q21 and q22 became wrong answers instead of no answer, so wrong went up from 4 to 6. Layer 2 changed nothing: it had the same 18, 6, 0, the same 62 model calls and the same 48708 tokens. Layer 3 only changed what the agent admits: 18 correct, 4 wrong, 2 no answer. Two wrong answers became no answer, but the number of correct answers stayed 18
 
 ## 2. One failure the full harness did not fix
 
